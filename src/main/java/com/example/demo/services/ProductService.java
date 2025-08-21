@@ -22,8 +22,7 @@ public class ProductService {
     }
 
     public String getAddressById(String id) {
-        Product product = productRepository.findById(id).orElse(null);
-        return product != null ? product.getAddress().getZipCode() : null;
+        return productRepository.getZipCodeById(id);
     }
     public Product getProductById(String id) {
         return productRepository.findById(id).orElse(null);

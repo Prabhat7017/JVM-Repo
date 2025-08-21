@@ -1,3 +1,5 @@
+import com.example.demo.pojo.UserDetails;
+
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -109,16 +111,30 @@ public class main {
 //        scheduledThreadPool.shutdown(); // Shutdown the executor after tasks are submitted
 
 
+//
+//        BlockingQueue<Integer> queue = new ArrayBlockingQueue<>(5);
+//
+//        Producer producer = new Producer(queue);
+//        Consumer consumer = new Consumer(queue);
+//
+//        Thread producerThread = new Thread(producer);
+//        Thread consumerThread = new Thread(consumer);
+//        producerThread.start();
+//        consumerThread.start();
 
-        BlockingQueue<Integer> queue = new ArrayBlockingQueue<>(5);
 
-        Producer producer = new Producer(queue);
-        Consumer consumer = new Consumer(queue);
+//        UserDetails userDetails = new UserDetails.builder()
+//                .setAge(13)
+//                .setName("John Doe")
+//                .setEmail("fuguyge@kjf.com").build();
 
-        Thread producerThread = new Thread(producer);
-        Thread consumerThread = new Thread(consumer);
-        producerThread.start();
-        consumerThread.start();
+        UserDetails userDetails = UserDetails.builder()
+                                    .age(13)
+                                    .name("Prabhat")
+                                    .build();
+
+        System.out.println(userDetails);
+
     }
 
     public static class sharedValiable {
