@@ -128,13 +128,81 @@ public class main {
 //                .setName("John Doe")
 //                .setEmail("fuguyge@kjf.com").build();
 
-        UserDetails userDetails = UserDetails.builder()
-                                    .age(13)
-                                    .name("Prabhat")
-                                    .build();
+//        UserDetails userDetails = UserDetails.builder()
+//                                    .age(13)
+//                                    .name("Prabhat")
+//                                    .build();
+//
+//        System.out.println(userDetails);
 
-        System.out.println(userDetails);
 
+//        record Person(String name, int age){}
+//        Person person = new Person("John", 30);
+//        person.name= "Doe"; // This line will cause a compilation error because records are immutable
+//        person.age = 31; // This line will also cause a compilation error because records are
+//        System.out.println("Name: " + person.name() + ", Age: " + person.age());
+
+
+//        Object[] objects = {"Hello", 132, 12.5, true, 'A'};
+//        for (Object obj : objects) {
+//            if (obj instanceof String) {
+//                System.out.println("String: " + obj);
+//            } else if (obj instanceof Integer) {
+//                System.out.println("Integer: " + obj);
+//            } else if (obj instanceof Double) {
+//                System.out.println("Double: " + obj);
+//            } else if (obj instanceof Boolean) {
+//                System.out.println("Boolean: " + obj);
+//            } else if (obj instanceof Character) {
+//                System.out.println("Character: " + obj);
+//            } else {
+//                System.out.println("Unknown type: " + obj);
+//            }
+//        }
+
+//        for (Object obj: objects){
+//            switch (obj){
+//                case String s -> System.out.println("String: " + s);
+//                case Integer i -> System.out.println("Integer: " + i);
+//                case Double d -> System.out.println("Double: " + d);
+//                case Boolean b -> System.out.println("Boolean: " + b);
+//                case Character c -> System.out.println("Character: " + c);
+//                default -> System.out.println("Unknown type: " + obj);
+//            }
+//        }
+
+//
+//        Runnable runnable = () -> {
+//            try {
+//                System.out.println("Thread " + Thread.currentThread().getName() + " is running");
+//                Thread.sleep(10000);
+//                System.out.println("Thread " + Thread.currentThread().getName() + " has finished");
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//        };
+//        for (int i=0; i<100000; i++){
+//            new Thread(runnable).start();
+//        }
+
+//        for (int i=0; i<100000; i++){
+//            Thread.startVirtualThread(runnable);
+//        }
+
+
+        try(ExecutorService executor = Executors.newVirtualThreadPerTaskExecutor()){
+            for (int i=0; i<100000; i++){
+                executor.submit(()->{
+                    try {
+                        System.out.println("Thread " + Thread.currentThread().getName() + " is running");
+                        Thread.sleep(10000);
+                        System.out.println("Thread " + Thread.currentThread().getName() + " has finished");
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                });
+            }
+        }
     }
 
     public static class sharedValiable {

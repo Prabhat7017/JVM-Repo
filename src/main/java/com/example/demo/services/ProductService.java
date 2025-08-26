@@ -4,6 +4,7 @@ import com.example.demo.Entity.Address;
 import com.example.demo.Entity.Product;
 import com.example.demo.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,12 +18,16 @@ public class ProductService {
     public Product saveProduct(Product product) {
         return productRepository.save(product);
     }
-    public List<Product> getAllProducts() {
-        return productRepository.findAll();
+    public ResponseEntity getAllProducts() {
+        List<Product> products = productRepository.findAll();
+        return ResponseEntity.status(200).body(products);
     }
 
-    public String getAddressById(String id) {
-        return productRepository.getZipCodeById(id);
+    public ResponseEntity getZipCode(String id) {
+        String zipCode = productRepository.getZipCodeById(id);
+        return zipCode != null ?
+                ResponseEntity.status(200).body("Zip Code: " + zipCode) :
+                ResponseEntity.status(404).body("Zip Code not found, maybe address is missing for this product");
     }
     public Product getProductById(String id) {
         return productRepository.findById(id).orElse(null);

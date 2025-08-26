@@ -4,6 +4,7 @@ import com.example.demo.Entity.Address;
 import com.example.demo.Entity.Product;
 import com.example.demo.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,11 +17,11 @@ public class ProductController {
     ProductService productService;
 
     @GetMapping("/getZipcodeById/{id}")
-    public String getZipcodeById(@PathVariable String id) {
-        return "Zip Code: " + productService.getAddressById(id);
+    public ResponseEntity getZipcodeById(@PathVariable String id) {
+        return productService.getZipCode(id);
     }
     @GetMapping("/allProducts")
-    public List <Product> getAllProducts() {
+    public ResponseEntity getAllProducts() {
         return productService.getAllProducts();
     }
 
