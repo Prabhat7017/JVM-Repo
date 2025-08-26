@@ -1,7 +1,7 @@
 package com.example.demo.collectionsQus;
 
 public class SpecialStack {
-    private int arr[];
+    private final int arr[];
     private int top;
     private int maxSize;
     private int minElement;

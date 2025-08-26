@@ -1,5 +1,10 @@
 package com.example.demo.collectionsQus;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Setter
+@Getter
 public class Employee2 {
     private String name;
     private int age;
@@ -11,27 +16,5 @@ public class Employee2 {
         this.age = age;
         this.designation = designation;
     }
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public String getDesignation() {
-        return designation;
-    }
-
-    public void setDesignation(String designation) {
-        this.designation = designation;
-    }
 }

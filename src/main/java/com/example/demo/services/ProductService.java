@@ -1,9 +1,9 @@
 package com.example.demo.services;
 
-import com.example.demo.Entity.Address;
+
 import com.example.demo.Entity.Product;
 import com.example.demo.repository.ProductRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -12,18 +12,23 @@ import java.util.List;
 @Service
 public class ProductService {
 
-    @Autowired
-    private ProductRepository productRepository;
+
+    private final ProductRepository productRepository;
+
+
+    public ProductService(ProductRepository productRepository) {
+        this.productRepository = productRepository;
+    }
 
     public Product saveProduct(Product product) {
         return productRepository.save(product);
     }
-    public ResponseEntity getAllProducts() {
+    public ResponseEntity<List<Product>> getAllProducts() {
         List<Product> products = productRepository.findAll();
         return ResponseEntity.status(200).body(products);
     }
 
-    public ResponseEntity getZipCode(String id) {
+    public ResponseEntity<String> getZipCode(String id) {
         String zipCode = productRepository.getZipCodeById(id);
         return zipCode != null ?
                 ResponseEntity.status(200).body("Zip Code: " + zipCode) :

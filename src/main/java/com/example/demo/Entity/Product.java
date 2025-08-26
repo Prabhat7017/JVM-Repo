@@ -1,12 +1,16 @@
 package com.example.demo.Entity;
 
+import com.example.demo.annotation.MaskPII;
+import com.example.demo.enums.MaskingType;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "products")
 public class Product {
+    @MaskPII(type= MaskingType.ID)
     @Id
     private String id;
+    @MaskPII(type = MaskingType.ID)
     private String name;
     private double price;
     private Address address;

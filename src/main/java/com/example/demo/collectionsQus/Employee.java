@@ -1,5 +1,8 @@
 package com.example.demo.collectionsQus;
 
+import lombok.Getter;
+
+@Getter
 public class Employee implements Comparable<Employee>{
     double age;
     double salary;
@@ -11,22 +14,6 @@ public class Employee implements Comparable<Employee>{
         this.salary = salary;
         this.firstName = firstName;
         this.lastName = lastName;
-    }
-
-    public double getSalary() {
-        return salary;
-    }
-
-    public double getAge() {
-        return age;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
     }
 
     @Override
