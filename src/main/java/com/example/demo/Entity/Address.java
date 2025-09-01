@@ -1,9 +1,14 @@
 package com.example.demo.Entity;
 
+import com.example.demo.annotation.MaskPII;
+import com.example.demo.enums.MaskingType;
+
 public class Address {
     String street;
     String city;
     String state;
+
+    @MaskPII
     String zipCode;
 
     public String getStreet() {

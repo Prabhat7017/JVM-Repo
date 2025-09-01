@@ -10,8 +10,11 @@ public class DevMessageService implements MessageService{
 
     @Value("${app.message}")
     private String message;
+
+    @Value("${app.password}")
+    private String pass;
     @Override
     public String getMessage() {
-        return "Dev Message: " + message;
+        return "Dev Message: " + message + "Pass: " + pass;
     }
 }
