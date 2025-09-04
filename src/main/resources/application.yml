@@ -1,0 +1,31 @@
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: JournalEntryDB
+      auto-index-creation: true
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: prabhat.kumar@tothenew.com
+    password: ${Password}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+  cloud:
+    aws:
+      region:
+        static: us-east-1
+        auto: false
+      credentials:
+        access-key: ${AccessKey}
+        secret-key: ${SecretKey}
+      sqs:
+        endpoint: ${SqsEndpoint}
+server:
+  port: 9090
+
