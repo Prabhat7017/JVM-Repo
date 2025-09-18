@@ -26,6 +26,7 @@ spring:
         secret-key: ${SecretKey}
       sqs:
         endpoint: ${SqsEndpoint}
-server:
-  port: 9090
-
+  cache:
+    type: redis
+    port: 6379
+    host: "redissqstestingcache-cgajqj.serverless.use1.cache.amazonaws.com"
