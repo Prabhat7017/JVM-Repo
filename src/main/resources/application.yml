@@ -30,3 +30,8 @@ spring:
     type: redis
     port: 6379
     host: "redissqstestingcache-cgajqj.serverless.use1.cache.amazonaws.com"
+
+  config:
+    import: aws-secretsmanager:secret/mysecret
+secret:
+  value: ${my-first-secret}
